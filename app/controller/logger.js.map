@@ -1,0 +1,43 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\src\\controller\\logger.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "moment",
+        "module",
+        "exports",
+        "indexAction",
+        "json",
+        "isPost",
+        "data",
+        "model",
+        "select",
+        "success",
+        "addAction",
+        "post",
+        "time",
+        "Date",
+        "format",
+        "think",
+        "isEmpty",
+        "id",
+        "res",
+        "add",
+        "catch",
+        "isError",
+        "err",
+        "Error",
+        "e",
+        "fail",
+        "message",
+        "update"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,SAASD,QAAQ,QAAR,CAAf,C,CAAiC;;AAEjCE,OAAOC,OAAP,GAAiB,cAAcJ,IAAd,CAAmB;AAC5BK,aAAN,GAAoB;AAAA;;AAAA;AAClB,aAAO,MAAKC,IAAL,CAAU,KAAV,CAAP;;AAEE,UAAI,MAAKC,MAAT,EAAiB;AACjB,YAAIC,OAAO,MAAM,MAAKC,KAAL,CAAW,oBAAX,EAAiCC,MAAjC,EAAjB;AACA;AACA,eAAO,MAAKC,OAAL,CAAaH,IAAb,CAAP;AACD,OAJC,MAIK;AACL,eAAO,MAAKF,IAAL,CAAU,IAAV,CAAP;AACD;AATiB;AAWnB;;AAEKM,WAAN,GAAkB;AAAA;;AAAA;AAChB,UAAIJ,OAAO,OAAKK,IAAL,EAAX;AACA,aAAO,OAAKP,IAAL,CAAUE,IAAV,CAAP;AACAA,WAAKM,IAAL,GAAYZ,OAAO,IAAIa,IAAJ,EAAP,EAAmBC,MAAnB,CAA0B,qBAA1B,CAAZ;AACA,UAAIC,MAAMC,OAAN,CAAcV,KAAKW,EAAnB,CAAJ,EAA4B;;AAE1B,YAAIC,MAAI,IAAR;AACA,YAAI;AACD;AACDA,gBAAM,MAAM,OAAKX,KAAL,CAAW,oBAAX,EAAiCY,GAAjC,CAAqCb,IAArC,EAA2Cc,KAA3C,CAAiD,eAAO;AAClE,mBAAOL,MAAMM,OAAN,CAAcC,GAAd,IAAqBA,GAArB,GAA2B,IAAIC,KAAJ,CAAUD,GAAV,CAAlC;AACD,WAFW,CAAZ;AAGD,SALD,CAKE,OAAOE,CAAP,EAAU;AACV,iBAAO,OAAKC,IAAL,CAAU,IAAV,EAAgBD,CAAhB,CAAP;AACD;;AAED,YAAIT,MAAMM,OAAN,CAAcH,GAAd,CAAJ,EAAwB;AACtB,iBAAO,OAAKO,IAAL,CAAU,IAAV,EAAgBP,IAAIQ,OAApB,CAAP;AACD;AACD,YAAIR,GAAJ,EAAS;AACP,iBAAKT,OAAL,CAAa,IAAb;AACD,SAFD,MAEO;AACL,iBAAKA,OAAL,CAAa,IAAb;AACD;AACF,OApBD,MAoBO;AACL;AACA,YAAIS,MAAM,MAAM,OAAKX,KAAL,CAAW,oBAAX,EAAiCoB,MAAjC,CAAwCrB,IAAxC,CAAhB;AACA,YAAIY,GAAJ,EAAS;AACP,iBAAKT,OAAL,CAAa,IAAb;AACD,SAFD,MAEO;AACL,iBAAKA,OAAL,CAAa,IAAb;AACD;AACF;AAhCe;AAiCjB;AA/CiC,CAApC",
+    "file": "..\\..\\src\\controller\\logger.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\nconst moment = require('moment');//引用了moment库,需要安装npm install --save moment\n\nmodule.exports = class extends Base {\n  async indexAction() {\n    return this.json(\"123\");\n     \n      if (this.isPost) {\n      let data = await this.model('thinkjsplus_logger').select();\n      //return '1';\n      return this.success(data);\n    } else {\n      return this.json(null);\n    }\n    \n  }\n\n  async addAction() {\n    let data = this.post();\n    return this.json(data);\n    data.time = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');\n    if (think.isEmpty(data.id)) {\n     \n      let res=null;\n      try {\n         //保存\n        res = await this.model('thinkjsplus_logger').add(data).catch(err => {\n          return think.isError(err) ? err : new Error(err);\n        });\n      } catch (e) {\n        return this.fail(1000, e);\n      }\n\n      if (think.isError(res)) {\n        return this.fail(1000, res.message);\n      }\n      if (res) {\n        this.success(true);\n      } else {\n        this.success(true);\n      }\n    } else {\n      //更新\n      let res = await this.model('thinkjsplus_logger').update(data);\n      if (res) {\n        this.success(true);\n      } else {\n        this.success(true);\n      }\n    }\n  }\n};"
+    ]
+}

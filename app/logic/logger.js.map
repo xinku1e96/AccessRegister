@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\src\\logic\\logger.js"
+    ],
+    "names": [],
+    "mappings": ";AACA;AACA;;AAEA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;AAEA;;AAEA;AACA;AACA;AACA;;AAEA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;AAEA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA",
+    "file": "..\\..\\src\\logic\\logger.js",
+    "sourcesContent": [
+        "\n// const Base = require('./base.js');\n// const moment = require('moment');//引用了moment库,需要安装npm install --save moment\n\n// module.exports = class extends Base {\n//   async listAction() {\n//    //   return this.json(\"123\");\n//       if (this.isPost) {\n//       let data = await this.model('thinkjsplus_logger').select();\n//       return this.success(data);\n//     } else {\n//       return this.json(null);\n//     }\n    \n//   }\n\n//   async addAction() {\n//     let data = this.post();\n//     data.time = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');\n//     if (think.isEmpty(data.id)) {\n     \n//       let res=null;\n//       try {\n//          //保存\n//         res = await this.model('thinkjsplus_logger').add(data).catch(err => {\n//           return think.isError(err) ? err : new Error(err);\n//         });\n//       } catch (e) {\n//         return this.fail(1000, e);\n//       }\n\n//       if (think.isError(res)) {\n//         return this.fail(1000, res.message);\n//       }\n//       if (res) {\n//         this.success(true);\n//       } else {\n//         this.success(true);\n//       }\n//     } else {\n//       //更新\n//       let res = await this.model('thinkjsplus_logger').update(data);\n//       if (res) {\n//         this.success(true);\n//       } else {\n//         this.success(true);\n//       }\n//     }\n//   }\n// };"
+    ]
+}
